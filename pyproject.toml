@@ -1,0 +1,20 @@
+[project]
+name = "raspberry-hello"
+version = "0.1.0"
+description = "A small script to let you know your raspberry pi ip address when it turns on"
+readme = "README.md"
+authors = [
+    { name = "feodora2501", email = "feodora2501@gmail.com" }
+]
+requires-python = ">=3.11"
+dependencies = [
+    "httpx>=0.28.1",
+    "python-dotenv>=1.2.3",
+]
+
+[project.scripts]
+raspberry-hello = "raspberry_hello:main"
+
+[build-system]
+requires = ["uv_build>=0.12.5,<0.13.0"]
+build-backend = "uv_build"
