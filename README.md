@@ -24,7 +24,8 @@ Then you need to create a systemd service that going to execute the app after th
 Creating a file in `/etc/systemd/system/raspberry-hello.service`
 Which contains the service itself:
 #### Docker variant
-`[Unit]
+```
+[Unit]
 Description=Send Raspberry Pi IP to Telegram on boot
 Wants=network-online.target
 After=network-online.target docker.service
@@ -35,11 +36,13 @@ Type=oneshot
 ExecStart=/usr/bin/docker run --rm --network host raspberry-hello:latest
 
 [Install]
-WantedBy=multi-user.target`
+WantedBy=multi-user.target
+```
 #### Python variant
 `Note: for the python variant, install deps first: pip3 install httpx python-dotenv, and keep .env inside WorkingDirectory.`
 
-`[Unit]
+```
+[Unit]
 Description=Send Raspberry Pi IP to Telegram on boot
 Wants=network-online.target
 After=network-online.target
@@ -50,18 +53,19 @@ WorkingDirectory=/path/to/raspberry-pi-hello
 ExecStart=/usr/bin/python3 /path/to/raspberry-pi-hello/src/main.py
 
 [Install]
-WantedBy=multi-user.target`
+WantedBy=multi-user.target
+```
 
 Once everything is set up you can reload daemons with:
 
-`sudo systemctl daemon-reload`
+```sudo systemctl daemon-reload```
 
 And enable the service:
 
-`sudo systemctl enable raspberry-hello.service`
+```sudo systemctl enable raspberry-hello.service```
 
 You can check if everything works perfectly with:
 
-`sudo systemctl start --now raspberry-hello.service`
+```sudo systemctl start --now raspberry-hello.service```
 
 If you configured everything as described you should receive a message into Telegram.
