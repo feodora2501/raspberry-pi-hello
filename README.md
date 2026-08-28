@@ -1,6 +1,6 @@
 ### Introduction
 Welcome to this small repo designed to help the Raspberry Pi owners.
-This app is just looking for first non-loopback IP address (like wlan0 or eth0) on your Pi and send it directly to your Telegram.
+This app is just looking for first non-loopback IP address (like wlan0 or eth0) on your Pi and sends it directly to your Telegram.
 ### Configuration
 Firstly you need to create a bot token in telegram using @BotFather and paste it to the `.env` file in the project root (next to /src).
 You can easily use the program right after installation of all the dependencies which are`httpx` for api requests to the Telegram API
