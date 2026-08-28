@@ -9,6 +9,7 @@ But you always can just change the token itself in the `tg_api.py` file and even
 ### Docker
 If you want to use it in docker as it was originally intended, then you have to install docker-engine firstly.
 `Note: You have to build docker image on the directly on the Raspberry so there is going to be no any architecture mistakes.`
+
 Then you have to build the docker image itself with:
 ```
 sudo docker image build -t raspberry-hello:latest .
@@ -37,6 +38,7 @@ ExecStart=/usr/bin/docker run --rm --network host raspberry-hello:latest
 WantedBy=multi-user.target`
 #### Python variant
 `Note: for the python variant, install deps first: pip3 install httpx python-dotenv, and keep .env inside WorkingDirectory.`
+
 `[Unit]
 Description=Send Raspberry Pi IP to Telegram on boot
 Wants=network-online.target
@@ -50,10 +52,16 @@ ExecStart=/usr/bin/python3 /path/to/raspberry-pi-hello/src/main.py
 [Install]
 WantedBy=multi-user.target`
 
-Once everything is set up you can reload daemons:
+Once everything is set up you can reload daemons with:
+
 `sudo systemctl daemon-reload`
+
 And enable the service:
+
 `sudo systemctl enable raspberry-hello.service`
+
 You can check if everything works perfectly with:
+
 `sudo systemctl start --now raspberry-hello.service`
+
 If you configured everything as described you should receive a message into Telegram.
