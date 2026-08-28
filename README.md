@@ -57,9 +57,15 @@ WantedBy=multi-user.target
 ```
 
 Once everything is set up you can reload daemons with:
+
 ```sudo systemctl daemon-reload```
+
 And enable the service:
+
 ```sudo systemctl enable raspberry-hello.service```
+
 You can check if everything works perfectly with:
+
 ```sudo systemctl start --now raspberry-hello.service```
+
 If you configured everything as described you should receive a message into Telegram.
